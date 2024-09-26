@@ -45,7 +45,7 @@ function validDate(date) {
         }
 
         
-        console.log(responseDate);
+        //console.log(responseDate);
         result.innerHTML = responseDate;
         return responseDate;
 }
@@ -94,3 +94,8 @@ buttonSection.addEventListener('click', function(e) {
     }
 });
 
+/*
+/^(0[1-9]|[1-4]\d|5[0-2])\d{3}$/i para validar codigo postal
+dos primeros dígitos  si empieza en 0 va de 1-9 si de 1-4 / el segundo
+regex101
+*/
