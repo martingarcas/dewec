@@ -1,0 +1,6 @@
+git config --global --list
+
+cambiar el email
+
+git config --global user.email mgarcas320@g.educaand.es
+martingar
