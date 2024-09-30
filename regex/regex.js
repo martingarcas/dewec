@@ -60,14 +60,18 @@ function comp(a) {
 //Función para validar Matrícula de coche
 function validCar() {
 
-    let regex = "/^(\d{4})\s?[B-DF-HJ-NP-TV-Z]{3}$/i";
+    let regex = /^(\d{4})\s?[B-DF-HJ-NP-TV-Z]{3}$/i;
 
-    //let validate = inputObject.test(regex);
+    responseDate = regex.test(inputObject);
 
-    console.log(inputObject);
+    console.log(regex.test(inputObject));
+
+    result.innerHTML = responseDate;
+    return responseDate;
+
+    //console.log(inputObject.match(regex)); INVESTIGAR PORQUE CON TEST NO VA
     
-
-    console.log(inputObject.match(regex));    
+    
 }
 
 buttonSection.addEventListener('click', function(e) {
