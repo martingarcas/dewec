@@ -1,8 +1,10 @@
 window.addEventListener("load", function () {
    
-    let cnt         = document.querySelector('.cnt');
-    buttonAdd       = cnt.querySelector('.button-add');
-    buttonDelete    = cnt.querySelector('.button-delete');
+    let cnt             = document.querySelector('.cnt');
+    let buttonAdd       = cnt.querySelector('.button-add');
+    let buttonDelete    = cnt.querySelector('.button-delete');
+    let newOptionInput  = document.querySelector("#new-option");
+    let select1         = document.querySelector("#select1");
 
     /*buttonAdd.addEventListener("click", function () {
         
@@ -29,6 +31,24 @@ window.addEventListener("load", function () {
             crear();
         }
     })
+
+    
+    newOptionInput.addEventListener("keypress",  function (e) {
+    
+        if (e.key === "Enter") {
+            e.preventDefault();
+            
+            let newOption       = document.createElement("option");
+            newOption.innerHTML = newOptionInput.value;
+            select1.appendChild(newOption);
+        }
+    });
+
+    function search(ele) {
+        if(event.key === 'Enter') {
+            alert(ele.value);        
+        }
+    }
 
 
     //buttonAdd.addEventListener("mouseover", crear);
