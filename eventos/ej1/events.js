@@ -6,7 +6,7 @@ window.addEventListener("load", function () {
     let newOptionInput  = document.querySelector("#new-option");
     let select1         = document.querySelector("#select1");
 
-    /*buttonAdd.addEventListener("click", function () {
+    buttonAdd.addEventListener("click", function () {
         
         let p           = document.createElement("p");
         p.innerHTML     = "Hola Martín";
@@ -17,7 +17,7 @@ window.addEventListener("load", function () {
         });
 
         cnt.appendChild(p);
-    });*/
+    });
 
     buttonDelete.addEventListener("click", function () {
         
@@ -43,13 +43,6 @@ window.addEventListener("load", function () {
             select1.appendChild(newOption);
         }
     });
-
-    function search(ele) {
-        if(event.key === 'Enter') {
-            alert(ele.value);        
-        }
-    }
-
 
     //buttonAdd.addEventListener("mouseover", crear);
 
