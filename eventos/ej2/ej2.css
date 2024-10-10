@@ -29,7 +29,7 @@ table {
     text-align: center;
   }
   
-  tbody > tr:nth-of-type(even) {
+  /*tbody > tr:nth-of-type(even) {
     background-color: rgb(237 238 242);
-  }
+  }*/
   
