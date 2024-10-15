@@ -6,9 +6,14 @@ window.addEventListener("load", function () {
 
     function editar() {
 
+        let filaEncabezado = tabla.querySelector("thead tr");
+        let filas = this.querySelectorAll("table#table-section tbody>tr");
+
         if (!this.editadaMartin) {
 
-            let filas = this.querySelectorAll("table#table-section tbody>tr");
+            let nuevoEncabezado = document.createElement("th");
+            nuevoEncabezado.textContent = "Acciones";
+            filaEncabezado.appendChild(nuevoEncabezado);
 
             for (let i = 0; i < filas.length; i++) {
 
@@ -51,10 +56,53 @@ window.addEventListener("load", function () {
                 
                 filas[i].appendChild(td);
             }
+
+            let tFoot   = document.createElement("tfoot");
+            let trFoot  = document.createElement("tr");
+            let td1     = document.createElement("td");
+            let td2     = document.createElement("td");
+            let td3     = document.createElement("td");
+
+            let inputDni    = document.createElement("input");
+            let inputNombre = document.createElement("input");
+
+            td1.appendChild(inputDni);
+            td2.appendChild(inputNombre);
+
+
+            let botonGuardar    = document.createElement("button");
+            let botonCancelar   = document.createElement("button");
+
+            botonGuardar.innerHTML = "Guardar";
+            botonGuardar.addEventListener("click", guardarNuevo);
+            td3.appendChild(botonGuardar);
+
+            
+            botonCancelar.innerHTML = "Cancelar";
+            botonCancelar.addEventListener("click", cancelarNuevo);
+            td3.appendChild(botonCancelar);
+
+            trFoot.appendChild(td1);
+            trFoot.appendChild(td2);
+            trFoot.appendChild(td3);
+            tFoot.appendChild(trFoot);
+
+            tabla.appendChild(tFoot);
             
         } else {
 
-            
+            // Eliminar la columna acciones
+            filaEncabezado.removeChild(filaEncabezado.lastChild);
+            filas.forEach(fila => {
+                fila.removeChild(fila.lastChild);
+            });
+
+            // Eliminar el tfoot
+            var tFoot = tabla.querySelector("tfoot");
+            if (tFoot) {
+                
+                tabla.removeChild(tFoot);
+            }
         }
 
         this.editadaMartin =! this.editadaMartin;
@@ -150,6 +198,19 @@ window.addEventListener("load", function () {
             
             fila.parentNode.insertBefore(fila.nextElementSibling, fila);
         }
+    }
+
+    function guardarNuevo() {
+        
+                
+    }
+
+    function cancelarNuevo() {
+        
+        var inputs = tabla.querySelectorAll("tfoot input");
+        inputs.forEach(input => {
+            input.value = "";
+        });
     }
 
 });
