@@ -1,17 +1,30 @@
 window.addEventListener("load", function () {
 
+    //Traete la plantilla;
     let contenedor  = document.getElementById("contenedor");
     let auxiliar    = document.createElement("div");
     let auxTBody    = document.createElement("tbody");
     let tabla;
    
-    //Traete la plantilla;
     fetch("./plantillas/tabla.html")
         .then(respuesta => respuesta.text())
         .then(texto => {
 
             auxiliar.innerHTML = texto;
+            // Capturo la tabla
             tabla = auxiliar.firstElementChild;
+            tabla.addEventListener("dblclick", function (e) {
+                
+                if (!e.ctrlKey) {
+
+                    tabla.classList.toggle("ACTIVADO");
+
+                } else {
+
+                    tabla.classList.toggle("IMPORTANTE");
+                }
+            });
+            
             let tBody = tabla.tBodies[0];
             auxTBody.appendChild(tBody.firstElementChild);
             let modelo = auxTBody.firstElementChild;
@@ -33,3 +46,19 @@ window.addEventListener("load", function () {
             })
         })
 });
+
+/*
+          // Capturo la tabla
+            var t = contenedor.firstElementChild;
+            t.addEventListener("dblclick", function (e) {
+                
+                if (!e.ctrlKey) {
+
+                    t.classList.toggle("ACTIVADO");
+
+                } else {
+
+                    t.classList.toggle("IMPORTANTE");
+                }
+            });
+ */
