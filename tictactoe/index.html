@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tic Tac Toe</title>
+
+	<style>
+		body {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			background-color: #2e2e2e; /* Fondo más oscuro */
+			font-family: 'Arial', sans-serif;
+			color: #f0f0f0; /* Color del texto */
+		}
+
+		h1 {
+			position: absolute;
+			top: 20px;
+			font-size: 2.5rem;
+			text-align: center;
+			color: #f0f0f0;
+			text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+		}
+
+		table {
+			border-collapse: collapse;
+			border-radius: 15px;
+			padding: 10px;
+			box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5), 
+						-10px -10px 20px rgba(255, 255, 255, 0.1);
+			background-color: #3a3a3a; /* Color de fondo más oscuro */
+		}
+
+		td {
+			width: 100px;
+			height: 100px;
+			text-align: center;
+			font-size: 3rem;
+			border-radius: 10px;
+			background: #4a4a4a; /* Color de celdas */
+			box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.4),
+						inset -5px -5px 10px rgba(255, 255, 255, 0.2);
+			transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+			cursor: pointer; /* Cursor tipo pointer */
+		}
+
+		td:hover {
+			transform: scale(1.05);
+			box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+						inset -5px -5px 10px rgba(255, 255, 255, 0.4);
+			background-color: #5a5a5a; /* Color de fondo al hacer hover */
+		}
+
+		td.X {
+			color: #ff2d00; /* Color para X más vibrante */
+			text-shadow: 0 0 15px rgba(255, 45, 0, 0.8); /* Efecto de brillo más fuerte */
+		}
+
+		td.O {
+			color: #00ffea; /* Color para O más vibrante */
+			text-shadow: 0 0 15px rgba(0, 255, 234, 0.8); /* Efecto de brillo más fuerte */
+		}
+
+		@media (max-width: 600px) {
+			td {
+				width: 80px;
+				height: 80px;
+				font-size: 2.5rem;
+			}
+			
+			h1 {
+				font-size: 2rem;
+			}
+		}
+    </style>
+
+</head>
+<body>
+
+	<h1>Tres en Raya</h1>
+
+    <table id="tablero">
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+		
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+    </table>
+	
+	<script src="js/tictactoe.js"></script>
+</body>
+</html>
