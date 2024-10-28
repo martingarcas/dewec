@@ -8,6 +8,7 @@
 	<style>
 		body {
 			display: flex;
+			flex-direction: column;
 			justify-content: center;
 			align-items: center;
 			height: 100vh;
@@ -64,6 +65,24 @@
 			text-shadow: 0 0 15px rgba(0, 255, 234, 0.8); /* Efecto de brillo más fuerte */
 		}
 
+		button {
+			margin-top: 20px; /* Espaciado superior */
+			padding: 10px 20px; /* Espaciado interno */
+			font-size: 1rem; /* Tamaño de fuente */
+			color: #f0f0f0; /* Color del texto */
+			background-color: #4a4a4a; /* Color de fondo */
+			border: none; /* Sin borde */
+			border-radius: 10px; /* Bordes redondeados */
+			box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5); /* Sombra */
+			cursor: pointer; /* Cambiar cursor al pasar por encima */
+			transition: background-color 0.2s, transform 0.2s; /* Transiciones */
+		}
+
+		button:hover {
+			background-color: #5a5a5a; /* Color de fondo al hacer hover */
+			transform: scale(1.05); /* Efecto de escala al hacer hover */
+		}
+
 		@media (max-width: 600px) {
 			td {
 				width: 80px;
@@ -103,6 +122,12 @@
         </tr>
 
     </table>
+
+	<div class="reiniciar">
+		<button id="reiniciar" style="margin-top: 20px; padding: 10px; font-size: 1rem; cursor: pointer;">
+			Reiniciar Juego
+		</button>
+	</div>
 	
 	<script src="js/tictactoe.js"></script>
 </body>

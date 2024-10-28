@@ -12,7 +12,8 @@ window.addEventListener("load", function () {
 	];
 
 	// Variable para seguir el turno del jugador
-	let turno = -1; // -1 para "X", 1 para "O"
+	let turno 			= -1; // -1 para "X", 1 para "O"
+	let juegoTerminado 	= false; // Estado para comprobar la victoria
 
 	// Manejar los clics en el tablero
 	tablero.addEventListener('click', function(e) {
@@ -26,6 +27,12 @@ window.addEventListener("load", function () {
 	// Función para realizar el movimiento
 	function mover(index) {
 
+		if (juegoTerminado) {
+
+			alert('El juego ha terminado. Reinicia para jugar de nuevo.');
+			return;
+		}
+
 		if (tableroJuego[Math.floor(index / 3)][index % 3] === 0) {
 
 			tableroJuego[Math.floor(index / 3)][index % 3] = turno;
@@ -38,6 +45,7 @@ window.addEventListener("load", function () {
 				if (comprobarVictoria()) {
 
 					alert(`¡Jugador ${turno === -1 ? 'X' : 'O'} gana!`);
+					juegoTerminado = true; // Marcar el juego como terminado
 
 				} else {
 
@@ -82,6 +90,26 @@ window.addEventListener("load", function () {
 			const suma = combinacion.reduce((acc, [fila, col]) => acc + tableroJuego[fila][col], 0);
 			return suma === -3 || suma === 3;
 		});
+	}
+
+	// Seleccionar el botón de reiniciar
+	const botonReiniciar = document.getElementById('reiniciar');
+
+	// Manejar el clic en el botón de reiniciar
+	botonReiniciar.addEventListener('click', reiniciarJuego);
+
+	// Función para reiniciar el juego
+	function reiniciarJuego() {
+
+		tableroJuego = [
+			[0, 0, 0],
+			[0, 0, 0],
+			[0, 0, 0]
+		];
+
+		Array.from(celdas).forEach(celda => celda.textContent = '');
+		turno = -1; // Reiniciar turno
+		juegoTerminado = false; // Reiniciar estado del juego
 	}
 
 });
