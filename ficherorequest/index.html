@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>request</title>
+</head>
+<body>
+
+	<h1 class="title">Contacto</h1>
+	<form>
+		<input type="file" name="fichero">
+		<input type="button" value="Enviar" name="enviar">
+	</form>
+
+	<div id="contenedor">
+
+	</div>
+
+	<canvas id="canvas" width="400" height="400" style="border:1px solid black"></canvas>
+	
+	<script>
+		//ajax.js
+		//fetch(info.php)
+		//SI SOLO ES PARA TRAERME DATOS NO TENGO FORMDATA, CREO SOLICITUD SIN CUERPO O SI ESTOY PIDIENDO DATOS CON GET SOLO FETCH
+		//para enviar por post nuevo form data nueva solicitud
+		var form = document.forms[0];
+		var fichero = form.elements["fichero"];
+		form.elements["enviar"].addEventListener("click", function () {
+			console.log("hola")
+			var datos = new FormData();
+			datos.append("nombre", "KEBAB DE LA CASA");
+			datos.append("ingredientes", "12;234;2345;14");
+
+			var solicitud = new Request("info.php", {
+				method: "POST",
+				body: datos
+			});
+
+			fetch(solicitud)
+				.then(respuesta=>respuesta.text())
+				.then(texto=>{document.getElementById("contenedor").innerHTML = texto})
+		});
+	</script>
+	
+</body>
+</html>
