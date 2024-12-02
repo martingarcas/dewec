@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Formulario para validaciones</title>
+
+	<style>
+		.valido {
+			border: 2px solid green;
+		}
+
+		.no-valido {
+			border: 2px solid red;
+		}
+	</style>
+</head>
+<body>
+
+	<h2>Formulario de Registro</h2>
+		<form action="/" method="POST" class="formulario_register">
+
+			<div class="form-fielsets">
+				<!-- Datos Personales -->
+				<fieldset>
+					<legend>Datos Personales</legend>
+
+					<label for="nombre">Nombre:</label>
+					<input type="text" name="nombre" id="nombre" placeholder="Tu nombre" value="" class="cadenaNoVacia">
+
+					<label for="apellido">Apellido:</label>
+					<input type="text" name="apellido" id="apellido" placeholder="Apellido" value="" class="cadenaNoVacia">
+
+					<label for="dni">DNI:</label>
+					<input type="text" name="dni" id="dni" placeholder="DNI" value="" class="esDni">
+
+					<label for="fecha">Fecha de nacimiento:</label>
+					<input type="text" name="fecha" id="fecha" placeholder="11/12/2024" value="" class="esFecha">
+
+				</fieldset>
+
+			</div>
+
+			<!-- Botón de registro -->
+			<button class="btn" id="btn" type="submit">GRABAR</button>
+		</form>
+
+	<script src="js/validaciones.js"></script>
+	<script src="js/form.js"></script>
+</body>
+</html>
