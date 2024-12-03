@@ -8,48 +8,48 @@ window.addEventListener('load', function () {
 	canvas.pelota 		= pelota;
 	canvas.ctx 			= ctx;
 	canvas.angulo 		= 210;
-	canvas.velocidad 	= 5;
+	canvas.velocidad 	= 15;
 
 
 	canvas.temporizadorPelota = setInterval(function () {
 		let canvas 	= document.querySelector('#tablero');
+		canvas.img = document.createElement("img");
+		canvas.img.src = "img/pelota.png";
+		canvas.sonido = document.createElement("audio");
+		canvas.sonido.src = "sonidos/pelotazo.mp3";
 
 		let anguloRadianes = (2 * Math.PI * canvas.angulo)/360 //convertimos el angulo en radianes (no es necesario)
 
 		canvas.pelota[0] += canvas.velocidad * Math.cos(anguloRadianes);
 		canvas.pelota[1] -= canvas.velocidad * Math.sin(anguloRadianes);
 
-		if (canvas.pelota[0] - canvas.pelota[2] <= 0) {
-			if (canvas.angulo === -180) {
-				canvas.angulo = 0;
-
-			} else if (canvas.angulo > 90 && canvas.angulo < 180) {
-				canvas.angulo -= 90;
-
-			} else if (canvas.angulo > 180 && canvas.angulo < 270) {
-				canvas.angulo += 90;
-			}
-
-		} else if (canvas.pelota[0] + canvas.pelota[2] >= 1024){
-
-				canvas.angulo = 180;
+		if (canvas.pelota[0] - canvas.pelota[2] <= 0 || (canvas.pelota[0] + canvas.pelota[2] >= 1024)) {
+			canvas.angulo = 180 - canvas.angulo;
+			canvas.sonido.play();
+			// canvas.sonido.duration = 1;
 		}
+
+		if ((canvas.pelota[1] -canvas.pelota[2] <= 0 || (canvas.pelota[1] + canvas.pelota[2] >= 768))) {
+			canvas.angulo = 360 - canvas.angulo;
+			canvas.sonido.play();
+		}
+
 	}, 30);
 
 	canvas.temporizador = setInterval(function () {
 
 		let canvas 	= document.querySelector('#tablero');
 		canvas.ctx.clearRect(0, 0, 1024, 768);
-		pintarPelota(canvas.pelota, canvas.ctx);
+		pintarPelota(canvas.pelota, canvas.ctx, canvas.img);
 	}, 30);
 
 	window.addEventListener("keydown", function (e) {
 		let canvas 	= document.querySelector('#tablero');
 
-		let velocidad = 2;
+		let velocidad = 10;
 
 		if (e.shiftKey) {
-			velocidad = 6;
+			velocidad = 15;
 		}
 
 		// console.log(e)
@@ -73,9 +73,10 @@ window.addEventListener('load', function () {
 
 });
 
-function pintarPelota(pelota, ctx) {
+function pintarPelota(pelota, ctx, img) {
 
 	ctx.beginPath();
-	ctx.arc(pelota[0], pelota[1], pelota[2], 0 , 2 * Math.PI);
+	ctx.drawImage(img, pelota[0] - 30, pelota[1] - 30);
+	// ctx.arc(pelota[0], pelota[1], pelota[2], 0 , 2 * Math.PI);
 	ctx.stroke();
 }

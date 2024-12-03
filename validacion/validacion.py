@@ -6,7 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from openpyxl import load_workbook
 import time
 
-wb = load_workbook("Libro1.xlsx", data_only=True)
+wb = load_workbook("Libro.xlsx", data_only=True)
 sh = wb["Hoja1"]
 
 driver = webdriver.Firefox()
@@ -48,7 +48,11 @@ try:
 
         fila = fila + 1
 
-    for i in range(0,2):
+    for i in range(0,3):
+        element1.clear()
+        element2.clear()
+        element3.clear()
+        element4.clear()
         element1.send_keys(casos[i*4][1])
         element2.send_keys(casos[i*4+1][1])
         element3.send_keys(casos[i*4+2][1])
@@ -62,12 +66,26 @@ try:
             #element4.get_attribute("class").find("no-valido")
         ]
 
+        respuestaEsperada = [
+            casos[i*4][2], casos[i* 4 + 1][2],
+            casos[i*4 + 2][2], casos[i* 4 + 3][2],
+        ]
+
+        print("Prueba :" + str(i) + str(respuesta == respuestaEsperada))
+
+        if respuesta != respuestaEsperada:
+            print("Respuesta esperada: ")
+            print(respuesta)
+            print(respuestaEsperada)
+
+        time.sleep(2)
+
 
     #element.clear()
 
     time.sleep(2)
 
-    print(respuesta)
+    #print(respuesta)
 
     time.sleep(300)
 

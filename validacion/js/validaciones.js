@@ -24,7 +24,17 @@ String.prototype.esCadena = function () {
 
 String.prototype.esFecha = function () {
 	
-	var expr = /\d{2}\/\d{2}\/\d{4}/i;
+	var expr = /(\d{1,2})\/(\d{1,2})\/(\d{4})/i;
+    partes = expr.exec(this);
+    respuesta = false;
 
-	return expr.test(this);
+    if (partes) {
+        f = new Date(partes[3], partes[2]-1, partes[1]);
+        respuesta = parseInt(partes[1]) == f.getDate() &&
+                    parseInt(partes[2]) == f.getMonth() + 1 &&
+                    parseInt(partes[3]) == f.getFullYear();
+    }
+    
+
+	return respuesta;
 }
