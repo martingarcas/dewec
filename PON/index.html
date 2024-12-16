@@ -7,16 +7,56 @@
 
 	<style>
 
+		body {
+			font-family: Arial, sans-serif;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			margin: 0;
+			background-color: #f0f0f0;
+			flex-direction: column;
+		}
+		#tablero {
+			border: 2px solid black;
+			background-color: white;
+			width: 1024px;
+			height: 768px;
+		}
+		#marcador {
+			font-size: 24px;
+			font-weight: bold;
+			color: black;
+		}
+		#iniciar-btn, #reiniciar-btn {
+			padding: 10px 20px;
+			font-size: 18px;
+			margin: 10px;
+			cursor: pointer;
+		}
+		#reiniciar-btn {
+			display: none; /* Ocultamos el botón de reiniciar inicialmente */
+		}
+
 		canvas {
 			border: 1px solid black;
 		}
 
 	</style>
 
-	<script src="js/pon.js"></script>
+	<script type="module" src="js/main.js"></script>
 </head>
 <body>
 
+	<button id="iniciar-btn">Iniciar juego</button>
+	<button id="reiniciar-btn" style="display:none;">Reiniciar juego</button>
+	<div id="marcador">
+		<span>Martín: <span id="puntosJugador1">0</span></span>
+		<span>Daniel: <span id="puntosJugador2">0</span></span>
+	</div>
+
+
+<!--	<canvas id="tablero" width="1024" height="768"></canvas>-->
 	<canvas id="tablero" width="1024" height="768"></canvas>
 
 </body>
